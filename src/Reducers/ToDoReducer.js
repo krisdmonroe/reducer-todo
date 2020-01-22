@@ -1,23 +1,27 @@
-import React, { useReducer } from 'react'
+
 
 export const initialState = 
 {
     item: 'Learn about reducers',
     completed: false,
-    id: 3892987589
+    id: Date.now()
 };
 
 export const ToDoReducer = (state, action) => {
     switch(action.type){
-        case `ADD_TODO`:
-            return {
-                initialState:[...state, {item: action.todoText, completed:false }]
-            };
-            case `REMOVE_TODO`:
+        case `ADD-TODO`:
+            return(
+                [...state, {
+                    item: action.payload,
+                    completed: false,
+                    id: Date.now()
+                }]
+            );
+            case `DELETE-TODO`:
                 return {
-                    state:initialState
+                    initialState
                 }
-                default:
+            default:
                     return state
     }
 
